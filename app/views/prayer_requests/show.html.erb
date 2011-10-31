@@ -1,0 +1,30 @@
+<% store_location %>
+
+<div class="prayer_request_even">
+<h1><%=h@prayer_request.title%> by <%= @prayer_request.user_name%></h1>
+<fieldset>
+	<legend>
+  <%= image_tag @prayer_request.private_text() + '.png', :title => @prayer_request.private_text() %>
+  <%= image_tag 'answered.png', :title => 'Answered Prayer' if @prayer_request.answered %>
+	<%= ' @ ' + @prayer_request.created_at.to_s(:posts)%>
+	<% if @prayer_request.belongs_to_user?(session[:user_id]) %>
+	  <%= link_to image_tag('add.png', :border => 0, :title => 'Add Prayer Update'), 
+    new_prayer_update_path(:id => @prayer_request.id)%> 
+		<%= link_to image_tag('edit.png', :border => 0, :title => 'Edit Prayer Request'), 
+      edit_prayer_request_path(@prayer_request) %> 
+		<%= link_to image_tag('delete.png', :border => 0, :title => 'Delete Prayer Request'), 
+      @prayer_request, :confirm => 'Are you sure?', :method => :delete %>
+	<%end%>
+	</legend>
+	<p>
+	  <b>Request:</b><hr/>
+		<div class="prayer_request_class">
+			<%= @prayer_request.request %>
+		</div>
+	</p>
+</fieldset>
+</div>
+<hr/>
+<div id="prayer_updates_container_<%=@prayer_request.id%>">
+	<%= render :partial => 'prayer_updates/prayer_updates', :object => @prayer_request.prayer_updates%>
+</div>

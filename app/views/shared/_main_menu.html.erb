@@ -1,0 +1,21 @@
+<%= link_to 'Home', @myconfig.default_redirect_url%> |
+
+<%= link_to 'PrayerRequests', prayer_requests_path %> |
+
+<%= link_to 'AnsweredPrayers', prayer_requests_path + '/answered' %> |
+
+<%= link_to 'RandomRequest', prayer_requests_path + '/random' %> |
+
+<% if session[:user_id] %>
+	<%= link_to 'NewPrayerRequest', new_prayer_request_path() %> |
+<%end%>
+
+<%if session[:user_id] and controller.controller_name == 'prayer_requests' and controller.action_name == 'show'%>
+	<%= link_to 'Back', prayer_requests_path %> |
+<%end%>
+
+<% if session[:user_id]%>
+	<%= link_to 'Logout', '/login'%>
+<% else %>
+	<%= link_to 'Login', '/login'%>
+<% end %>

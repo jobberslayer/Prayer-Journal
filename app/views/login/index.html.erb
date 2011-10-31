@@ -1,0 +1,53 @@
+<%= javascript_include_tag "prototype" %>
+<div id="login_form">
+<center>
+<br/>
+<%if session[:user_id]%>
+	<% form_for(@login, :url => { :action => "logout" }) do |f| %>
+	<div>
+		<%= f.hidden_field :username %>
+		<%= f.submit "Logout"%>
+		<%= f.submit "Cancel", :name => "login[Cancel]"%>
+	</div>
+	<%end%>
+<%else%>
+	<% form_for(@login, :url => { :action => "authenticate" }) do |f| %>
+	<div>
+	<table>
+	<tr>
+		<td><%= f.label "User Name:"%></td>
+		<td><%= f.text_field :username, :value => @username %></td>
+	</tr><tr>
+		<td><%= f.label "Password:"%></td>
+		<td><%= f.password_field :password%></td>
+	</tr>
+	</table>
+	</div>
+	<div>
+		<%= f.submit "Login"%>
+		<%= f.submit "Cancel", :name => "login[Cancel]"%>
+	</div>
+	<br/>
+	<div>
+		<%= link_to 'Forgot your password', "http://members.franklinstreetchurch.org/index.php/component/user/reset", :target => '_blank'%>
+		<%= link_to 'Forgot your username', "http://members.franklinstreetchurch.org/index.php/component/user/remind", :target => '_blank'%>
+	</div>
+	<br/>
+	<div style="font: 12px/12px serif; text-align:left; width:700px">
+		<fieldset>
+			<legend>*NOTE:</legend>
+		<ul>
+		<li> Usernames and passwords are tied to the accounts on the
+			<%= link_to 'Grace Church main site', "http://gracechurchlouisville.org", :target => '_blank' %>.<br/> 
+		<li> The above links to take you there for account maintenance. 
+		<li>After adjusting your password you will need to return here to log in to the 
+			prayer journal.
+		<li> The links above open up new windows. So this login window should still be open after you click them.
+		  </ul>
+		</fieldset>
+	</div>
+	<%end%>
+	<%= set_focus_to_id('login_username') %>
+<%end%>
+</center>
+</div>

@@ -1,0 +1,174 @@
+body { background-color: #fff; color: #333; }
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+	margin: 0px;
+}
+
+pre {
+	font: 16px/16px "Georgia";
+}
+
+.private_level {
+	color:orange;
+}
+
+.date {
+	color:lightblue;
+}
+
+a { color: #666; }
+a:visited { color: #666; }
+a:hover { color: #ccc;}
+
+.search-found {
+  background-color: yellow;
+  color: red;
+}
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+#banner {
+	background: #9c9;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 2px solid;
+	font: small-caps 40px/40px "Times New Roman", serif;
+	color: #282;
+	text-align:center;
+}
+
+#banner #page_title {
+	font: small-caps 20px/20px "Times New Roman", serif;
+}
+
+#content {
+	margin-left: 10px;
+	margin-top: 5px;
+}
+
+#footer {
+	text-align: center;
+	font: small-caps 12px/12px "Times New Roman", serif;
+	border-top: 3px double black;
+	border-bottom: 3px double black;
+}
+
+.main_page_section {
+	width: 100%;
+	height: 100%;
+	vertical-align:top;
+}
+
+.main_page_section fieldset {
+	background: #141;	
+}
+
+
+.main_page_section legend {
+	color: #9c9;
+	background: #141;
+	border: 1px dotted black;
+}
+
+prayer_request_class {
+}
+
+.prayer_request_class a {
+	color: gray;
+}
+
+.prayer_request_class a:visited {
+	color: gray;
+}
+
+.prayer_request_class a:hover {
+	color: red;
+}
+
+.prayer_request_class a:visited:hover {
+	color: red;
+}
+
+prayer_request_comment_class {
+}
+
+.prayer_request_comment_class a {
+	color: gray;
+}
+
+.prayer_request_comment_class a:visited {
+	color: gray;
+}
+
+.prayer_request_comment_class a:hover {
+	color: red;
+}
+
+.prayer_request_comment_class a:visited:hover {
+	color: red;
+}
+
+#Gsearch_text {
+	font: small-caps 50px/50px "Times New Roman", serif;
+	font-weight: bold;
+}
+
+.pagination span {
+    border: 1px solid black;
+    padding: 2px;
+}
+
+.pagination .current {
+    border: 1px solid black;
+    background-color: #282;
+    padding: 2px;
+}
+
+.pagination a {
+    border: 1px solid black;
+    padding: 2px;
+    text-decoration: none;
+}
+
+.pagination .disabled {
+    color: #DDDDDD;
+    border: 1px solid #DDDDDD;
+}
+

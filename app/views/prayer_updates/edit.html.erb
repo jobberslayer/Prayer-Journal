@@ -1,0 +1,14 @@
+<%= javascript_include_tag "prototype" %>
+<% form_for @prayer_update do |f| %>
+	<fieldset>
+		<legend>
+			Edit Prayer Update for [<%=h @prayer_request.title%>]</legend>
+		<div>
+			<%= f.text_area :message, :size => '100x20' %>
+		</div>
+		<%= f.hidden_field(:prayer_request_id, :value => @prayer_request.id)%>
+		<%= f.submit "Save" %>
+		<%= f.submit "Cancel", :name => 'prayer_update[Cancel]'%>
+	</fieldset>
+<%end%>
+<%= set_focus_to_id_and_highlight('prayer_update_message') %>

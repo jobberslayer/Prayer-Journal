@@ -1,0 +1,13 @@
+development:
+  default_redirect_url: /
+  super_user_id: 62
+  
+  mongrel_start_port: 8001
+  mongrel_number_processes: 3
+
+production:
+  default_redirect_url: /
+  super_user_id: 62
+  
+  mongrel_start_port: 8001
+  mongrel_number_processes: 3

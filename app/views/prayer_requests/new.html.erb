@@ -1,0 +1,34 @@
+<%= javascript_include_tag "prototype" %>
+<% form_for(@prayer_request) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+		<b><%= f.label :title %></b>
+		<%= f.text_field :title %> <br/>
+		<%= f.radio_button :private, 2, :checked => 'checked' %> 
+      <%= image_tag('public.png', :width => 24) %>
+      <b>(Anyone can read it)</b><br/>
+		<%= f.radio_button :private, 1 %> 
+      <%= image_tag('protected.png', :width=> 24) %>
+      <b>(Only people logged in can read it)</b><br/>
+		<%= f.radio_button :private, 0 %> 
+      <%= image_tag('private.png', :width => 24) %>
+      <b>(Only you and admins can read it)</b><br/>
+  </p>
+  <br/>
+  <p>
+    <%= f.check_box :answered %>
+    <%= image_tag('answered.png', :width => 24) %>
+    <b>(Prayer Answered)</b>
+  </p>
+  <br/>
+  <p>
+    <b><%= f.label :request %><br /></b>
+    <%= f.text_area :request, :size => '100x20'%>
+  </p>
+  <p>
+    <%= f.submit "Post" %>
+		<%= f.submit "Cancel", :name => 'prayer_request[Cancel]'%>
+  </p>
+<% end %>
+<%= set_focus_to_id('prayer_request_title') %>

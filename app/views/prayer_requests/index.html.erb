@@ -1,0 +1,52 @@
+<% store_location %>
+<%= javascript_include_tag 'mytools.js' %>
+<% form_remote_tag :url => {:action => :show_updates} do %>
+	<%= hidden_field :prayer_updates, :prayer_request_id, :value => '' %>
+	<%= hidden_field :search, :search_text, :value => @search %>
+	<div style="display:none"><%= submit_tag "submit", :id => "showupdate"%></div>
+<% end%>
+<% if !@search.nil? && !@search.empty? %>
+<div class='search_text'>
+  Found <%=@prayer_requests.length%> results for [<%=@search%>].
+</div>
+<% end %>
+<%= will_paginate @prayer_requests %>
+<br/>
+<% for prayer_request in @prayer_requests %>
+	<div class="<%= cycle('prayer_request_odd', 'prayer_request_even') %>">
+	<fieldset>
+    <legend>
+			<% if prayer_request.prayer_updates.length > 0 %>
+			<%= image_submit_tag 'plus.png', :border => 0, 
+       :title => 'Show Updates', 
+        :id => "toggle_button_#{prayer_request.id}", :onclick => "toggle_prayer_updates('#{prayer_request.id}')"
+      %>
+			<%end%>
+			
+      <%= image_tag prayer_request.private_text() + '.png', :title => prayer_request.private_text() %>
+      <%= image_tag 'answered.png', :title => 'Answered Prayer' if prayer_request.answered %>
+   		<%= link_to highlight_search_results(@search,prayer_request.title) + " by " + 
+        highlight_search_results(@search, prayer_request.user_name) + 
+        '(' + prayer_request.prayer_updates.length.to_s + ')', 
+        prayer_request,
+        :title => prayer_request.prayer_updates.length.to_s + ' Updates'
+      %>
+			<% if prayer_request.belongs_to_user?(session[:user_id]) %>
+	      <%= link_to image_tag('add.png', :border => 0, :title => 'Add Prayer Update'), 
+          new_prayer_update_path(:id => prayer_request.id)%>
+		    <%= link_to image_tag('edit.png', :border => 0, :title => 'Edit Prayer Request'), 
+          edit_prayer_request_path(prayer_request) %>
+		    <%= link_to image_tag('delete.png', :border => 0, :title => 'Delete Prayer Request'), 
+          prayer_request, :confirm => 'Are you sure?', :method => :delete %>
+			<%end%>
+      <br/>
+			<font class="date">[<%=prayer_request.created_at.to_s(:posts)%>]</font>
+  	</legend>
+		<pre><%= highlight_search_results(@search, prayer_request.request) %></pre>
+	</fieldset>
+	</div>
+	<hr/>
+	<div id="prayer_updates_container_<%=prayer_request.id%>" style='display:none'></div>
+<% end %>
+<br />
+<%= will_paginate @prayer_requests %>

@@ -1,0 +1,50 @@
+.prayer_request_list_odd fieldset {
+	background-color: #efe;
+}
+
+.prayer_request_list_even fieldset {
+	background-color: #dfd;
+}
+
+
+.prayer_request_even fieldset {
+	background: #efe;	
+}
+
+
+.prayer_request_even legend {
+	color: #dfd;
+	background: #141;
+	border: 1px dotted #dfd;
+  padding: 5px;
+}
+
+.prayer_request_even a {
+	color: gray;
+}
+
+.prayer_request_even a:hover {
+	color: red;
+	
+}
+
+.prayer_request_odd fieldset {
+	background: #dfd;	
+}
+
+
+.prayer_request_odd legend {
+	color: #dfd;
+	background: #141;
+	border: 1px dotted #dfd;
+  padding: 5px;
+}
+
+.prayer_request_odd a {
+	color: gray;
+}
+
+.prayer_request_odd a:hover {
+	color: red;
+	
+}

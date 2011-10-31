@@ -1,0 +1,18 @@
+<% for prayer_request in @prayer_requests %>
+	<div class="<%= cycle('prayer_request_list_odd', 'prayer_request_list_even') %>">
+	<fieldset>
+  <%= image_tag prayer_request.private_text() + '.png', :title => prayer_request.private_text() %>
+		<%= 
+      link_to prayer_request.title + " by " + prayer_request.user_name +
+  	  '(' + prayer_request.prayer_updates.length.to_s + ')', 
+      prayer_request, 
+      :title => prayer_request.prayer_updates.length.to_s + ' Updates'
+    -%><br/>
+		<font class="date">[<%=prayer_request.created_at.to_s(:posts)%>]</font><br/>
+		<%= prayer_request.request.summarize()%>
+    <%= image_tag 'answered.png', :title => 'Answered Prayer' if prayer_request.answered %>
+	</fieldset>
+	</div>
+	<hr/>
+<% end %>
+<br />

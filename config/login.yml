@@ -1,0 +1,9 @@
+development:
+  url: e-kevin.com
+  controller: /cgi-bin/asdf
+  db: grace
+
+production:
+  url: e-kevin.com
+  controller: /cgi-bin/asdf
+  db: grace

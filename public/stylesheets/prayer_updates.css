@@ -1,0 +1,47 @@
+.prayer_update_list_odd fieldset {
+	background-color: #efe;
+}
+
+.prayer_update_list_even fieldset {
+	background-color: #dfd;
+}
+
+.prayer_update_odd fieldset {
+	background: #E6FCFF;
+}
+
+.prayer_update_odd legend {
+	color: #dfd;
+	background: #1F88A7;
+	border: 1px dotted #dfd;
+  padding: 5px;
+}
+
+.prayer_update_odd a {
+	color: #dfd;
+}
+
+.prayer_update_odd a:hover {
+	color: #ffffff;
+	
+}
+
+.prayer_update_even fieldset {
+	background: #EEEEEE;
+}
+
+.prayer_update_even legend {
+	color: #dfd;
+	background: #141;
+	border: 1px dotted #dfd;
+  padding: 5px;
+}
+
+.prayer_update_even a {
+	color: #dfd;
+}
+
+.prayer_update_even a:hover {
+	color: #ffffff;
+	
+}

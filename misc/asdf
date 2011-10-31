@@ -1,0 +1,65 @@
+#!/usr/bin/perl
+#This script is to be housed on the server that has login db tables.
+#Usage: asdf?a={db}&b={username}&c={password}&d={secret}
+#secret is 'asdf' 
+#Security through obsurity...aka lazy.
+#Works with joomla 1.5 jos_users table and it's salting/encryption method.
+
+use CGI;
+use DBI;
+use Digest::MD5 qw(md5_hex);
+
+my $cgi = new CGI();
+my $info = $cgi->Vars;
+
+my $db       = $$info{a};
+my $username = $$info{b};
+my $password = $$info{c};
+my $secret   = $$info{d};
+
+if (!$db || $secret != 'asdf') {
+  print $cgi->header('image/jpg');
+  my $jpg;
+  {
+    $/ = undef;
+    open IMG, "<../images/candycane.jpg";
+    $jpg = <IMG>;
+    close IMG; 
+  }
+  print $jpg;
+  exit;
+}
+
+my $sql = "select id, name, password from jos_users where username = '$username'";
+
+my $dbh = DBI->connect("DBI:mysql:database=$db;host=localhost", 'root', 'qwerty&');
+my $stmt = $dbh->prepare($sql);
+$stmt->execute();
+$row = $stmt->fetchrow_hashref();
+
+my $xml;
+if (checkPassword($row->{password}, $password))  {
+  $xml = qq(
+    <xml>
+      <return>true</return>
+      <name>$row->{name}</name>
+      <uid>$row->{id}</uid>
+    </xml>
+  );
+} else {
+  $xml = qq(<xml> <return>false</return> </xml>\n);
+}
+
+print $cgi->header('text/xml');
+print $xml;
+
+sub checkPassword {
+  my ($db_entry, $password) = @_;
+  return 0 if !$db_entry;
+  my @parts = split(/\:/, $db_entry);
+  my $crypt_pass = $parts[0];
+  my $salt = $parts[1];
+
+  return md5_hex($password . $salt) == $crypt_pass; 
+}
+

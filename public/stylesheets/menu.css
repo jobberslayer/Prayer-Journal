@@ -1,0 +1,18 @@
+.main_menu {
+	text-align: left;
+	padding: 5px;
+	font: small-caps 14px/14px "Times New Roman", serif;
+	border-top: 3px double #ede;
+	border-bottom: 3px double #ede;
+	background: #141;
+	color: #CCC;
+	height: 30px;
+}
+
+.main_menu a {
+	color: #CCC;
+}
+
+.main_menu a:hover {
+	color: red;
+}

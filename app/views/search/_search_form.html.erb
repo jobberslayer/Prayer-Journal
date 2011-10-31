@@ -1,0 +1,4 @@
+<% form_tag :controller => 'prayer_requests/index' do %>
+	<%= text_field :search, :search_text, :value => 'search...', 
+			:onclick => "this.value=''", :onblur => "this.value = 'search...'"%>
+<% end %>

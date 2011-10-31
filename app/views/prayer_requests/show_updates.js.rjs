@@ -1,0 +1,1 @@
+page.replace_html("prayer_updates_container_#{@prayer_request.id}", :partial => "prayer_updates/prayer_updates", :object => @prayer_updates)

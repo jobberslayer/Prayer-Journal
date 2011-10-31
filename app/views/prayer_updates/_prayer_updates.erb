@@ -1,0 +1,6 @@
+<% prayer_updates.each do |prayer_update| %>
+	<div class="<%= cycle('prayer_update_odd', 'prayer_update_even') %>">
+	<%= render(:partial => "prayer_update", :object => prayer_update) %>
+	</div>
+	<hr>
+<%end%>

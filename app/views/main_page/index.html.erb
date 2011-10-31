@@ -1,0 +1,18 @@
+<% store_location %>
+<br/>
+<table width="100%"><tr>
+<td width="50%" height="100%" style="border-right: 3px double black; vertical-align:top">
+<div class="main_page_section">
+<fieldset>
+	<legend>Latest Prayer Requests</legend>
+	<%= render (:partial => 'latest_prayers', :object => @prayer_requests)%>
+</fieldset>
+</div>
+</td><td width="50%" height="100%" style="vertical-align:top">
+<div class="main_page_section">
+	<fieldset>
+		<legend>Latest Prayer Updates</legend>
+		<%= render (:partial => 'latest_updates', :object => @prayer_updates)%>
+	</fieldset>
+</div>
+</td></tr></table>

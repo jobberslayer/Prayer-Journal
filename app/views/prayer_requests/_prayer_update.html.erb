@@ -1,0 +1,17 @@
+<fieldset>
+	<legend><%= '@ ' + prayer_update.created_at.to_s(:posts)%> 
+		<%	if prayer_update.belongs_to_user?(session[:user_id]) %>
+			<%= link_to image_tag('edit.png', :border => 0, :title => 'Edit Prayer Update'), 
+        edit_prayer_update_path(prayer_update)%> 
+			<%= link_to image_tag('delete.png', :border => 0, :title => 'Delete Prayer Update'), prayer_update, :confirm => 'Are you sure?', :method => :delete %>
+		<%end%>
+	</legend>
+	<p>
+		<div class="prayer_request_comment_class">
+			<%=
+        highlight_search_results(@search, prayer_update.message) 
+        #prayer_update.message
+      %>
+		</div>
+	</p>
+</fieldset>
